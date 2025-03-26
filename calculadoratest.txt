@@ -1,0 +1,71 @@
+touch calculadora.sh
+vim calculadora.sh
+#!/bin/bash
+
+calculadora() {
+    echo "===== Calculadora Interativa ====="
+
+    while true; do
+        # Recebendo os números do usuário
+        read -p "Digite o primeiro número: " num1
+        read -p "Digite o segundo número: " num2
+
+        # Exibindo o menu de operações
+        echo -e "\nEscolha a operação desejada:"
+        echo "1 - Adição"
+        echo "2 - Subtração"
+        echo "3 - Multiplicação"
+        echo "4 - Divisão"
+        echo "5 - Potenciação"
+        echo "6 - Média"
+
+        # Recebendo a escolha da operação
+        read -p "Digite o número da operação desejada (1-6): " opcao
+
+        # Realizando a operação selecionada
+        case $opcao in
+            1)
+                resultado=$(bc -l <<< "$num1 + $num2")
+                echo -e "\nResultado da adição: $num1 + $num2 = $resultado"
+                ;;
+            2)
+                resultado=$(bc -l <<< "$num1 - $num2")
+                echo -e "\nResultado da subtração: $num1 - $num2 = $resultado"
+                ;;
+            3)
+                resultado=$(bc -l <<< "$num1 * $num2")
+                echo -e "\nResultado da multiplicação: $num1 * $num2 = $resultado"
+                ;;
+            4)
+                if [ "$num2" == "0" ]; then
+                    echo -e "\nErro: Divisão por zero não é permitida!"
+                else
+                    resultado=$(bc -l <<< "$num1 / $num2")
+                    echo -e "\nResultado da divisão: $num1 / $num2 = $resultado"
+                fi
+                ;;
+            5)
+                resultado=$(bc -l <<< "$num1 ^ $num2")
+                echo -e "\nResultado da potenciação: $num1 ^ $num2 = $resultado"
+                ;;
+            6)
+                resultado=$(bc -l <<< "($num1 + $num2) / 2")
+                echo -e "\nMédia dos números: ($num1 + $num2) / 2 = $resultado"
+                ;;
+            *)
+                echo -e "\nOpção inválida! Por favor, escolha uma operação de 1 a 6."
+                ;;
+        esac
+
+        # Verificando se o usuário deseja continuar
+        read -p "Deseja realizar outro cálculo? (s/n): " resposta
+        if [ "$resposta" != "s" ]; then
+            echo -e "\nObrigado por usar a calculadora! Até a próxima!"
+            break
+        fi
+    done
+}
+
+chmod +x calculadora.sh
+./calculadora.sh
+
