@@ -74,3 +74,17 @@ Please refer to [SECURITY.md](./SECURITY.md).
 Copyright (c) Microsoft Corporation. All rights reserved.
 
 Licensed under the [MIT License](./LICENSE).
+Explicação do seu código em Python: 
+1 Definição da Função: A função calculadora() foi definida para encapsular todo o código da calculadora.
+
+2 Loop Infinito: Um loop infinito foi implementado para manter a calculadora ativa até que o usuário decida sair.
+
+3 Entrada dos Números e Opção: Comandos read foram usados para obter os números e a opção do usuário.
+
+4 Menu de Operações: Um menu foi criado para que o usuário possa escolher a operação desejada.
+
+5 Realização da Operação: Um bloco case foi usado para realizar a operação escolhida, utilizando bc -l para cálculos precisos.
+
+6 Verificação de Continuação: Após cada cálculo, o usuário é perguntado se deseja continuar.
+Explicação para executar o .sh: 
+eu coloquei .sh no final do arquivo para executar o script
